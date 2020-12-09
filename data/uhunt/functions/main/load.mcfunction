@@ -35,4 +35,4 @@ scoreboard objectives add deaths deathCount
 #   GlowingRunners - If runners have constant glowing effect.
 data modify storage uhunt:config {} merge value {GraceTimer:600, GraceEnabled:True, GlowingRunners:False}
 
-tellraw @a [{"text": "The Ultimate Hunt Pack has loaded!", "color": "green"}]
+tellraw @a [{"text": "The Ultimate Hunt Pack","bold": true, "color": "green", "extra": [{"text": " has loaded!", "bold": false}]}]
