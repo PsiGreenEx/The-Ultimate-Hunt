@@ -8,7 +8,7 @@
 #declare storage uhunt:config Config file for game settings.
 
 # Add teams
-#> The team hunting for the runner.
+#> The team hunting for the runners.
 team add hunter
 team modify hunter color red
 #> The team running from the hunters.
