@@ -5,8 +5,6 @@
 # @context main
 # @handles #minecraft:load
 
-#declare storage uhunt:config Config file for game settings.
-
 # Add teams
 #> The team hunting for the runners.
 team add hunter
@@ -29,6 +27,7 @@ scoreboard objectives add timer dummy
 scoreboard objectives add deaths deathCount
 
 # Init config unless already initialized.
+#declare storage uhunt:config Config file for game settings.
 # Config options:
 #   GraceTimer - Time in ticks for grace period.
 #   GraceEnabled - If grace period is enabled.
