@@ -4,3 +4,5 @@
 #
 # @within uhunt:main/tick
 
+scoreboard players set @a compassdrop 0
+scoreboard players set @a compass 0
