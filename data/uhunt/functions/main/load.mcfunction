@@ -55,7 +55,7 @@ scoreboard players set $HuntWin _ -1
 #       Lives[hunter,runner] - int - How many times each player from team or team can die. Infinite if -1.
 #       TeamLives - bool - If the teams share lives collectively.
 #endregion
-data modify storage uhunt:system p.Default merge value {DisplayTimer:True, FinalTenCountdown:True, GraceTimer:300, Glowing:[False,False], Compass:[True,False], WinCon:{GameTimer: 300, DragonKill:2, Lives:[-1,1], TeamLives: False}} 
+data modify storage uhunt:system p.Default merge value {DisplayTimer:False, FinalTenCountdown:False, GraceTimer:300, Glowing:[False,False], Compass:[True,False], WinCon:{GameTimer: -1, DragonKill:2, Lives:[-1,1], TeamLives: False}} 
 data modify storage uhunt:system c merge from storage uhunt:system p.Default
 
 # Place start position marker
@@ -63,7 +63,7 @@ data modify storage uhunt:system c merge from storage uhunt:system p.Default
 execute unless entity @e[tag=uhunt.startpos] at @p run summon minecraft:area_effect_cloud ~ ~ ~ {Age: -2147483648, Duration: -1, WaitTime: -2147483648, Tags: ["uhunt.startpos"]}
 
 # Misc init
-#declare bossbar uhunt:timer Display for GameTimer
+#declare bossbar uhunt:timer Display for GameTimer and GraceTimer
 title @a times 2 9 4
 gamerule doImmediateRespawn true
 bossbar remove uhunt:timer

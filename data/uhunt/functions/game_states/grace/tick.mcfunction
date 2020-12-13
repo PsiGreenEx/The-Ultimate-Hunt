@@ -6,12 +6,11 @@
 
 # Fancy border circle
 execute as @e[tag=uhunt.startpos] at @s run tp @s ~ ~ ~ ~3 ~
-execute as @e[tag=uhunt.startpos] at @s run particle end_rod ^ ^1 ^5 0 0.5 0 0 15 force @a[distance=0..5]
-execute as @e[tag=uhunt.startpos] at @s run particle end_rod ^ ^1 ^-5 0 0.5 0 0 15 force @a[distance=0..5]
+execute as @e[tag=uhunt.startpos] at @s run particle end_rod ^ ^5 ^5 0 5 0 0 50 force @a[distance=0..5]
+execute as @e[tag=uhunt.startpos] at @s run particle end_rod ^ ^5 ^-5 0 5 0 0 50 force @a[distance=0..5]
 
-# If hunter exits circle, teleport back to center and make sound
-execute at @e[tag=uhunt.startpos] as @a[team=hunter,distance=5..] at @s run playsound block.note_block.bass master @s ~ ~ ~ 100 0
-execute at @e[tag=uhunt.startpos] as @a[team=hunter,distance=5..] run tp @s ~ ~ ~
+# If hunter exits circle, teleport away from cirlce "wall"
+execute at @e[tag=uhunt.startpos] as @a[team=hunter,distance=5..] at @s facing entity @e[tag=uhunt.startpos] feet rotated ~ 0 run tp @s ^ ^ ^0.5
 
 # Give mining fatigue and resistance to hunters
 execute at @e[tag=uhunt.startpos] run effect give @a[distance=0..5] mining_fatigue 1 5 true

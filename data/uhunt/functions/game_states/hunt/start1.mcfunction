@@ -11,12 +11,15 @@ team join spectator @a[team=]
 gamemode survival @a[team=!spectator]
 gamemode spectator @a[team=spectator]
 
-# Quickly kill all players to refresh them
+# Refresh all players
 effect give @a instant_health 1 5
 effect give @a saturation 1 20
 
 # Clear deaths
 scoreboard players set @a deaths 0
+
+# Clear inventory
+clear @a
 
 # Reset HuntWin
 scoreboard players set $HuntWin _ -1

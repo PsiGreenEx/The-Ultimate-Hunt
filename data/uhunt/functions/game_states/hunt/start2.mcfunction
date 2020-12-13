@@ -20,12 +20,13 @@ execute if score $temp _ matches -1 as @a at @s run playsound block.note_block.p
 execute store result score $GameTimer timer run data get storage uhunt:system c.WinCon.GameTimer
 
 # Set timer display
-bossbar add uhunt:timer ""
-execute store result bossbar uhunt:timer max run scoreboard players get $GameTimer timer
-execute store result bossbar uhunt:timer value run scoreboard players get $GameTimer timer
 execute store result score $temp _ run data get storage uhunt:system c.DisplayTimer
-execute if score $temp _ matches 1 run bossbar set uhunt:timer players @a
-bossbar set uhunt:timer visible true
+execute unless score $GameTimer timer matches -1 if score $temp _ matches 1 run bossbar add uhunt:timer ""
+execute unless score $GameTimer timer matches -1 if score $temp _ matches 1 run execute store result bossbar uhunt:timer max run scoreboard players get $GameTimer timer
+execute unless score $GameTimer timer matches -1 if score $temp _ matches 1 run execute store result bossbar uhunt:timer value run scoreboard players get $GameTimer timer
+execute unless score $GameTimer timer matches -1 if score $temp _ matches 1 run execute store result score $temp _ run data get storage uhunt:system c.DisplayTimer
+execute unless score $GameTimer timer matches -1 if score $temp _ matches 1 run execute if score $temp _ matches 1 run bossbar set uhunt:timer players @a
+execute unless score $GameTimer timer matches -1 if score $temp _ matches 1 run bossbar set uhunt:timer visible true
 
 # Toggle Hunt
 scoreboard players set $Hunt _ 1
