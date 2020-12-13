@@ -26,5 +26,5 @@ execute at @e[tag=uhunt.startpos] run spreadplayers ~ ~ 0 1 true @a[team=!specta
 
 # Run grace if enabled, otherwise run start2
 execute store result score $temp _ run data get storage uhunt:system c.GraceTimer
-execute if score $temp _ matches 1.. run function uhunt:game_states/grace/start
-execute if score $temp _ matches 0 run function uhunt:game_states/hunt/start2
+execute if score $temp _ matches 0.. run function uhunt:game_states/grace/start
+execute if score $temp _ matches -1 run function uhunt:game_states/hunt/start2

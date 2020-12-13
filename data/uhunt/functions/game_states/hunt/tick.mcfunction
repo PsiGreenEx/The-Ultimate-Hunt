@@ -53,12 +53,18 @@ execute if score $temp _ matches 2 if entity @a[scores={dragon_kill=1..}] run sc
 
 # If timer enabled, check time.
 execute store result score $temp _ run data get storage uhunt:system c.WinCon.GameTimer
+execute store result score $temp2 _ run data get storage uhunt:system c.DisplayTimer
 execute unless score $temp _ matches -1 if score $GameTimer timer matches 0 run scoreboard players set $HuntWin _ 1
 execute unless score $temp _ matches -1 run scoreboard players remove $GameTimer timer 1
+execute unless score $temp _ matches -1 if score $temp2 _ matches 1.. run function uhunt:tools/timer
+
+# If final ten countdown is enabled, run countdown.
+execute store result score $temp _ run data get storage uhunt:system c.FinalTenCountdown
+execute if score $temp _ matches 1 if score $GameTimer timer matches 1..200 run function uhunt:game_states/hunt/finalten
 
 # Apply gamemodes
 execute as @a[team=spectator,nbt=!{playerGameType:3}] run gamemode spectator @s
-execute as @a[team=!spectator,team=!,nbt=!{playerGameType:0}] run gamemode survival @s
+execute as @a[team=!spectator,team=!,nbt=!{playerGameType:0}] run gamemode survival @s 
 
 # Check end
 execute unless score $HuntWin _ matches -1 run function uhunt:game_states/hunt/end

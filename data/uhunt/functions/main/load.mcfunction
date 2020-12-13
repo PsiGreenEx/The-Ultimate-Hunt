@@ -44,17 +44,18 @@ scoreboard players set $HuntWin _ -1
 # Init config.
 #declare storage uhunt:system Config file and presets for game settings.
 #region| Config options:
-#   DisplayTimer[hunter,runner] - int - If GameTimer is visible as bossbar to team.
+#   DisplayTimer - bool - If GameTimer is visible.
+#   FinalTenCountdown - bool - If dramatically countdown at 10 secs left.
 #   GraceTimer - int - Time in ticks for grace period. Disabled if -1.
 #   Glowing[hunter,runner] - bool - If team will have constant glowing effect.
 #   Compass[hunter,runner] - bool - If team can use a compass.
-#   WinCon - Tag contain data pertaining to runner and hunter win/loss conditions.
+#   WinCon - tag - Contains data pertaining to runner and hunter win/loss conditions.
 #       GameTimer - int - Time in ticks until the game ends and the runner wins. Disabled if -1.
 #       DragonKill - int - 0 Killing Dragon doesn't win the game. 1 Whichever team kills the dragon wins. 2 If dragon is killed at all, runners win.
 #       Lives[hunter,runner] - int - How many times each player from team or team can die. Infinite if -1.
 #       TeamLives - bool - If the teams share lives collectively.
 #endregion
-data modify storage uhunt:system p.Default merge value {DisplayTimer:[False, False], GraceTimer:300, Glowing:[False,False], Compass:[True,False], WinCon:{GameTimer: -1, DragonKill:2, Lives:[-1,1], TeamLives: False}} 
+data modify storage uhunt:system p.Default merge value {DisplayTimer:True, FinalTenCountdown:True, GraceTimer:300, Glowing:[False,False], Compass:[True,False], WinCon:{GameTimer: 300, DragonKill:2, Lives:[-1,1], TeamLives: False}} 
 data modify storage uhunt:system c merge from storage uhunt:system p.Default
 
 # Place start position marker
@@ -62,7 +63,9 @@ data modify storage uhunt:system c merge from storage uhunt:system p.Default
 execute unless entity @e[tag=uhunt.startpos] at @p run summon minecraft:area_effect_cloud ~ ~ ~ {Age: -2147483648, Duration: -1, WaitTime: -2147483648, Tags: ["uhunt.startpos"]}
 
 # Misc init
+#declare bossbar uhunt:timer Display for GameTimer
 title @a times 2 9 4
 gamerule doImmediateRespawn true
+bossbar remove uhunt:timer
 
-tellraw @a [{"text": "The Ultimate Hunt Pack","bold": true, "color": "green", "extra": [{"text": " has loaded!", "bold": false}]}]
+tellraw @a [{"text": "The Ultimate Hunt Pack","bold": true, "color": "green"},{"text": " has loaded!", "bold": false, "color": "white"},{"text": "\nFor more information on how to use this pack, please visit the ","color": "white","bold": false},{"text": "Github repo","color": "blue","underlined": true,"bold": false,"clickEvent": {"action": "open_url","value": "https://github.com/PsiGreenEx/The-Ultimate-Hunt"},"hoverEvent": {"action": "show_text","contents": "https://github.com/PsiGreenEx/The-Ultimate-Hunt"}},{"text": ".","color": "white","underlined": false,"bold": false}]

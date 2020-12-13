@@ -11,3 +11,7 @@ execute as @a at @s run playsound block.note_block.cow_bell master @s ~ ~ ~ 100 
 
 # Set grace timer
 execute store result score $GraceTimer timer run data get storage uhunt:system c.GraceTimer 1
+bossbar add uhunt:timer ""
+execute store result bossbar uhunt:timer max run scoreboard players get $GraceTimer timer
+execute store result bossbar uhunt:timer value run scoreboard players get $GraceTimer timer
+bossbar set uhunt:timer players @a

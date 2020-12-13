@@ -9,5 +9,8 @@ title @a title {"text": "Hunters Go!","bold": true,"color": "red"}
 tellraw @a {"text": "Hunters Go!","bold": true,"color": "red"}
 playsound block.note_block.pling master @s ~ ~ ~ 100 2
 
+# Clear Bossbar
+bossbar remove uhunt:timer
+
 # Run Start2
 function uhunt:game_states/hunt/start2
