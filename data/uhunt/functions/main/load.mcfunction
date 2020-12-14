@@ -64,7 +64,7 @@ scoreboard players set $HuntWin _ -1
 data modify storage uhunt:system p.Default merge value {DisplayTimer:False, FinalTenCountdown:False, GraceTimer:300, Glowing:[False,False], Compass:[True,False], WinCon:{GameTimer: -1, DragonKill:2, Lives:[-1,1], TeamLives: False}} 
 data modify storage uhunt:system c merge from storage uhunt:system p.Default
 
-data merge storage uhunt:config-text {c:{Compass:['',''],DisplayTimer:'',Glowing:['','']}}
+data merge storage uhunt:config-text {c:{DisplayTimer:'', FinalTenCountdown:'', GraceTimer:'', Glowing:['',''], Compass:['',''], WinCon:{GameTimer: '', DragonKill:'', Lives:['',''], TeamLives: ''}} }
 
 # Place start position marker
 #declare tag uhunt.startpos AEC placed upon loading the pack for the first time. Indicates where players will start.
