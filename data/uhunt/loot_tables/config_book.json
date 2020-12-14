@@ -1,0 +1,25 @@
+{
+    "type": "generic",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "weight": 1,
+                    "name": "minecraft:written_book",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": 1
+                        },
+                        {
+                            "function": "set_nbt",
+                            "tag": "{uhuntid:\"config\",title:\"Rules Editor\",author:\"PsiGreen\",resolved:0b,pages:['[\"╚═How This Works═╝\n- Click ✔ and ❌ to toggle them.\n- Red means this value only affects hunters.\n- Green means this value only effects runners.\n- To change a number, click it then click the text in chat. Enter your desired value into the command.\"]','[{\"text\":\"╚══Game Rules══╝\n\"},{\"text\":\"Compass: \",\"underlined\":false},{\"nbt\":\"c.Compass[0]\",\"storage\":\"uhunt:config-text\",\"interpret\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/trigger config set 1\"}},{\"text\":\" | \"},{\"nbt\":\"c.Compass[1]\",\"storage\":\"uhunt:config-text\",\"interpret\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/trigger config set 2\"}},{\"text\":\"\nGlowing: \"},{\"nbt\":\"c.Glowing[0]\",\"storage\":\"uhunt:config-text\",\"interpret\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/trigger config set 5\"}},{\"text\":\" | \"},{\"nbt\":\"c.Glowing[1]\",\"storage\":\"uhunt:config-text\",\"interpret\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/trigger config set 6\"}},{\"text\":\"\nDisplay Timer: \",\"underlined\":false},{\"nbt\":\"c.DisplayTimer\",\"storage\":\"uhunt:config-text\",\"interpret\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/trigger config set 3\"}},{\"text\":\"\nEnding Countdown: \"},{\"nbt\":\"c.FinalTenCountdown\",\"storage\":\"uhunt:config-text\",\"interpret\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/trigger config set 4\"}},{\"text\":\"\nGrace Timer: \"},{\"nbt\":\"c.GraceTimer\",\"storage\":\"uhunt:system\",\"bold\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/trigger config set 7\"}}]']}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

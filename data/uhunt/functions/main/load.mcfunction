@@ -29,6 +29,12 @@ scoreboard objectives add dragon_kill minecraft.killed:minecraft.ender_dragon
 scoreboard objectives add timer dummy
 #> Tracks number of deaths.
 scoreboard objectives add deaths deathCount
+#> Trigger for config. Tick cleared.
+scoreboard objectives add config trigger
+#> Trigger for editing value in config.
+scoreboard objectives add edit trigger
+#> Value editing.
+scoreboard objectives add value_edit dummy
 
 # Init dummy players
 #declare score_holder $GraceTimer Stores remaining grace period time.
@@ -58,14 +64,23 @@ scoreboard players set $HuntWin _ -1
 data modify storage uhunt:system p.Default merge value {DisplayTimer:False, FinalTenCountdown:False, GraceTimer:300, Glowing:[False,False], Compass:[True,False], WinCon:{GameTimer: -1, DragonKill:2, Lives:[-1,1], TeamLives: False}} 
 data modify storage uhunt:system c merge from storage uhunt:system p.Default
 
+data merge storage uhunt:config-text {c:{Compass:['',''],DisplayTimer:'',Glowing:['','']}}
+
 # Place start position marker
 #declare tag uhunt.startpos AEC placed upon loading the pack for the first time. Indicates where players will start.
 execute unless entity @e[tag=uhunt.startpos] at @p run summon minecraft:area_effect_cloud ~ ~ ~ {Age: -2147483648, Duration: -1, WaitTime: -2147483648, Tags: ["uhunt.startpos"]}
 
 # Misc init
 #declare bossbar uhunt:timer Display for GameTimer and GraceTimer
+#declare tag uhunt.admin Player allowed to use config trigger and book.
+#declare storage uhunt:config-text Text to hold for the config book.
+
 title @a times 2 9 4
 gamerule doImmediateRespawn true
+gamerule sendCommandFeedback false
 bossbar remove uhunt:timer
 
-tellraw @a [{"text": "The Ultimate Hunt Pack","bold": true, "color": "green"},{"text": " has loaded!", "bold": false, "color": "white"},{"text": "\nFor more information on how to use this pack, please visit the ","color": "white","bold": false},{"text": "Github repo","color": "blue","underlined": true,"bold": false,"clickEvent": {"action": "open_url","value": "https://github.com/PsiGreenEx/The-Ultimate-Hunt"},"hoverEvent": {"action": "show_text","contents": "https://github.com/PsiGreenEx/The-Ultimate-Hunt"}},{"text": ".","color": "white","underlined": false,"bold": false}]
+# Clear and give admins da book
+execute as @a[tag=uhunt.admin] run function uhunt:util/config-book
+
+tellraw @a [{"text": "The Ultimate Hunt Pack","bold": true, "color": "green"},{"text": " has loaded!", "bold": false, "color": "white"},{"text": "\nFor more on how to use this pack, please visit the ","color": "white","bold": false},{"text": "Github repo","color": "blue","underlined": true,"bold": false,"clickEvent": {"action": "open_url","value": "https://github.com/PsiGreenEx/The-Ultimate-Hunt"},"hoverEvent": {"action": "show_text","contents": "https://github.com/PsiGreenEx/The-Ultimate-Hunt"}},{"text": ".","color": "white","underlined": false,"bold": false}]

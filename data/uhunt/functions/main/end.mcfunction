@@ -6,3 +6,5 @@
 
 scoreboard players set @a compassdrop 0
 scoreboard players set @a compass 0
+scoreboard players set @a config 0
+scoreboard players set @a[tag=uhunt.admin] edit -999

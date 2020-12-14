@@ -62,6 +62,12 @@ execute unless score $temp _ matches -1 if score $temp2 _ matches 1.. run functi
 execute store result score $temp _ run data get storage uhunt:system c.FinalTenCountdown
 execute if score $temp _ matches 1 if score $GameTimer timer matches 1..200 run function uhunt:game_states/hunt/finalten
 
+# Apply glowing
+execute store result score $temp _ run data get storage uhunt:system c.Glowing[0]
+execute if score $temp _ matches 1 run effect give @a[team=hunter] glowing 1 0 true
+execute store result score $temp _ run data get storage uhunt:system c.Glowing[1]
+execute if score $temp _ matches 1 run effect give @a[team=runner] glowing 1 0 true
+
 # Apply gamemodes
 execute as @a[team=spectator,nbt=!{playerGameType:3}] run gamemode spectator @s
 execute as @a[team=!spectator,team=!,nbt=!{playerGameType:0}] run gamemode survival @s 
