@@ -10,10 +10,14 @@ There may be interesting features that could be added but wont be used very freq
 The pack in its current is usable, but not very user friendly. I have implemented the beginnings of a config editor book to allow players to change the rules without the use of commands, but it is incomplete.
 
 ## How to use
-Before you begin, each play must join their respective team with `/team join hunter` or `/team join runner`. Any players not in a team will be made a spectator automatically.  
+Before you begin, each player must join their respective team with `/team join hunter` or `/team join runner`. Any players not in a team will be made a spectator automatically as the game begins.  
 Then, run the command `/function uhunt:game_states/hunt/start1` to begin the game.
 
-To edit the rules, first view the current config using this command:  
+To be allowed to use the config book, use these commands:  
+`/tag @s add uhunt.admin`
+`/function uhunt:util/config-book`
+
+To edit the rules without the book, first view the current config using this command:  
 `/data get storage uhunt:system c`  
 Then edit the rule using this command:  
 `/data modify storage uhunt:system c.<RuleName> set value <Value>`  
